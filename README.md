@@ -1,46 +1,14 @@
-# RA ONE SMC Discord Dashboard
+# RA ONE SMC Dashboard
 
-This repository hosts the RA ONE SMC Discord dashboard for posted signal orders across XAUUSD, XAGUSD, USOIL, and UKOIL.
+This repository no longer hosts the RA ONE SMC dashboard on GitHub Pages.
 
-## Dashboard
+The dashboard should run locally on the Windows machine that contains the RA ONE signal journals and engine logs. Keeping it local avoids publishing account, Discord, trade, signal, or engine activity data to the web.
 
-The dashboard lives in `docs/` and is designed for GitHub Pages.
-
-It shows:
-
-- all Discord-posted signal orders from the journal snapshot
-- symbol-level engine heartbeat and handling state
-- SMC/ICT strategy confluence and vote pressure
-- entry, stop-loss, TP1-TP4, confidence, and lifecycle status
-- filters for symbol, direction, and status
-- CSV export from the browser
-
-## Update the data snapshot
-
-Run this from the project root after journals or logs change:
+Local run command:
 
 ```powershell
-python .\tools\build_dashboard_data.py
+cd C:\Users\neera\OneDrive\Desktop\discord
+.\run_local_dashboard.ps1
 ```
 
-That writes:
-
-```text
-docs/data/dashboard-data.json
-```
-
-## Preview locally
-
-```powershell
-python -m http.server 8080 -d docs
-```
-
-Then open:
-
-```text
-http://localhost:8080
-```
-
-## GitHub Pages
-
-The workflow in `.github/workflows/pages.yml` deploys `docs/` using GitHub Actions. In repository settings, set Pages source to GitHub Actions.
+The local dashboard rebuilds its data from the local journal/log files and opens on `http://localhost:<port>/`.
